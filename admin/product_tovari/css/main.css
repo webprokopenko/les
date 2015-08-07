@@ -7,3 +7,5 @@
 }
 .input{
     display: block;}
+.error{border 2px solid #ff0000;}
+.sucess{border: 2px solid green;}

@@ -168,6 +168,12 @@
 <script src='../js/catalog-style.js'></script>
 <script src='../js/to-top.js'></script>
 <script src="../js/ajax.js"></script>
+<script>
+    $("#main").removeClass("catalog-nav__trigger_active catalog-nav__link catalog-nav__link_active").addClass("catalog-nav__trigger catalog-nav__link");
+    $("#product_tovar").addClass("catalog-nav__trigger_active catalog-nav__link catalog-nav__link_active");
+    $("#product_tovar_ul").addClass("catalog-nav__subnav_opened");
+    $("#main_ul").removeClass("catalog-nav__subnav_opened");
+</script>
 <!-- endbuild -->
 </body>
 </html>

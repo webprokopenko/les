@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
+    <!--    Подключаем qtip css для qtip2.js - всплывающие подсказки-->
+    <link rel="stylesheet" href="../../bower/qtip2/jquery.qtip.min.css"/>
 </head>
 <body>
 <div class="wrap__tovar">
@@ -25,14 +27,14 @@
                         <span for="data" class="span">Дата</span>
                     </div>
                     <div class="t-cell">
-                        <input type="text" name="name_product" id="name_product" class="input">
+                        <input type="text" name="name_product" id="name_product" class="input" qtip-position="right" qtip-content="Вы не ввели Название">
                         <select name="category_f_k" id="category_f_k" class="input">
                         </select>
-                        <input type="text" name="price" id="price" class="input">
-                        <input type="text" name="col_vo" id="col_vo" class="input">
+                        <input type="text" name="price" id="price" class="input" qtip-position="right" qtip-content="Вы не ввели Цену">
+                        <input type="text" name="col_vo" id="col_vo" class="input" qtip-position="right" qtip-content="Вы не ввели Количество">
                         <select name="country_proish" id="country_proish" class="input">
                         </select>
-                        <input type="text" name="data_actuality" id="data_actuality" class="input">
+                        <input type="text" name="data_actuality" id="data_actuality" class="input" qtip-position="right" qtip-content="Вы не ввели Дату">
                     </div>
                 <input type="submit" value="Добавить товар">
                 </div>
@@ -52,6 +54,8 @@
 </div>
 </div>
 <script src="../../bower/jquery/dist/jquery.min.js"></script>
+<script src="../../bower/qtip2/jquery.qtip.min.js"></script>
+<script src="../../bower/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
 <script src="js/admin_product_tovari.js"></script>
 </body>
 </html>
