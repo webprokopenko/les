@@ -1,0 +1,9 @@
+.span{
+    display: block;
+}
+.t-cell{
+    display: table-cell;
+    vertical-align: top;
+}
+.input{
+    display: block;}

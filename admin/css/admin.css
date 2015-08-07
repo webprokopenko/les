@@ -1,0 +1,47 @@
+/* clearfix */
+.container-header:before, .clearfix:before,
+.container-header:after, .clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.container-header:after, .clearfix:after {
+    clear: both;
+}
+/* clearfix - конец */
+/* общие классы - конец */
+.wrap__group{
+    display: table;
+    border: 1px solid #bdbdbd;
+    width: 100%;
+}
+.wrapp__del-group-list{
+    display: inline-block;
+}
+.wrap__del-group-sub{
+    display: inline-block;
+}
+.row__group{}
+.col__group{
+    display: list-item;
+    border: 1px solid #bdbdbd;
+    text-align: center;
+    width: 100%;
+}
+.wrap__list-group{ float: left;}
+.wrap__tovar{border: 1px solid #bdbdbd;}
+.row__tovar{ display: table-row;}
+.col__tovar{display: block;
+    text-align: center;}
+.message__group{
+    max-width:500px;
+    margin: 0 auto;
+    text-align: center;
+}
+.sucess{
+    border: 1px solid green;
+    color: greenyellow;
+}
+.error{
+    border: 1px solid #ff0000;
+    color: orangered;
+}
