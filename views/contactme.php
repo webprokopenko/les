@@ -97,9 +97,7 @@
                         </select>
                     </form>
                 </div>
-
             </div>
-
             <div class="page__row page__middle clearfix">
                 <main class="content page__region">
                     <section class="content__block">
@@ -143,8 +141,6 @@
                 </main>
                 <? require_once("/module/menu.php") ?>
             </div>
-
-
         </div>
         <div class="to-top" id="to-top">Наверх</div>
     </div>

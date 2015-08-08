@@ -54,8 +54,11 @@
 </div>
 </div>
 <script src="../../bower/jquery/dist/jquery.min.js"></script>
+<!--Всплывающие подсказки-->
 <script src="../../bower/qtip2/jquery.qtip.min.js"></script>
+<!--Маска ввода-->
 <script src="../../bower/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
+<!--Скрипт-->
 <script src="js/admin_product_tovari.js"></script>
 </body>
 </html>

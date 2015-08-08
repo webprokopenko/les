@@ -107,6 +107,7 @@
             <div class="page__row page__middle clearfix">
                 <main class="content page__region">
                     <section class="content__block">
+                        <? require_once("/views/module/join_us.php")?>
                         <ul class="catalog catalog_style_grid list">
                             <?
                             $query="SELECT * FROM product_tovari LIMIT 20";
