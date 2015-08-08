@@ -87,18 +87,18 @@
                             <div class="contact-me-header">
                                 <h2 class="contact-me-text">Регистрация компании</h2>
                             </div>
-                            <div class="registration__msg">
-                            </div>
                             <div class="contact-me-body">
-                                <form action="#" id="add_company" class="contact-me-form">
+                                <div id="registration__msg" class="registration__msg error">
+                                </div>
+                                <form action="ajax/ajax_add_company.php" class="form" id="add_company" method="post">
                                     <div class="form-line clearfix">
                                         <div class="form-group name">
                                             <label for="name" class="label">Ваше имя</label>
-                                            <input type="text" name="name" id="name" class="input" placeholder="Как к Вам обращаться" qtip-position="left" qtip-content="Вы не ввели Имя">
+                                            <input type="text" name="name_sotr" id="name_sotr" class="input" placeholder="Как к Вам обращаться" qtip-position="left" qtip-content="Вы не ввели Имя">
                                         </div>
                                         <div class="form-group email">
                                             <label for="tel" class="label">Ваша должность</label>
-                                            <input type="text" name="dolznost" id="dolznost" class="input" placeholder="Менеджер,бухгалтер" qtip-position="left" qtip-content="Вы не ввели Должность">
+                                            <input type="text" name="dolzn_sotr" id="dolzn_sotr" class="input" placeholder="Менеджер,бухгалтер" qtip-position="left" qtip-content="Вы не ввели Должность">
                                         </div>
                                     </div>
                                     <div class="form-line clearfix">
@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="form-group email">
                                             <label for="tel" class="label">Телефон</label>
-                                            <input type="tel" name="tel" id="tel" class="input" placeholder="Ваш телефон" qtip-position="left" qtip-content="Вы не ввели Должность">
+                                            <input type="tel" name="tel" id="tel" class="input" placeholder="0671234567" qtip-position="left" qtip-content="Вы не ввели Телефон">
                                         </div>
                                     </div>
                                     <div class="form-line clearfix">
@@ -118,7 +118,7 @@
                                         </div>
                                         <div class="form-group email">
                                             <label for="adress" class="label">Адрес</label>
-                                            <input type="text" name="adress" id="adress" class="input" placeholder="Ваш телефон" qtip-position="left" qtip-content="Вы не ввели Адрес">
+                                            <input type="text" name="adress" id="adress" class="input" placeholder="Ваш адрес" qtip-position="left" qtip-content="Вы не ввели Адрес">
                                         </div>
                                     </div>
                                     <div class="form-line clearfix">
@@ -133,8 +133,14 @@
                                     </div>
                                     <div class="form-line clearfix">
                                         <div class="form-group textarea">
+                                            <label for="name_company" class="label">Название Вашей компании</label>
+                                            <input type="text" name="name_company" class="input w_100" id="name_company " placeholder="Название компании" qtip-position="left" qtip-content="Вы не ввели Название компании">
+                                        </div>
+                                    </div>
+                                    <div class="form-line clearfix">
+                                        <div class="form-group textarea">
                                             <label for="message" class="label">Кратко о Вашей компании</label>
-                                            <textarea name="message" id="message" rows="4" class="textarea" placeholder="Кратко чем занимается компания,ваши лучшие стороны" qtip-position="left" qtip-content="Вы не ввели сообщение"></textarea>
+                                            <textarea name="opisanie" id="opisanie" rows="4" class="textarea" placeholder="Кратко чем занимается компания,ваши лучшие стороны" qtip-position="left" qtip-content="Вы не ввели информацию"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-line clearfix">
@@ -153,7 +159,7 @@
                         </div>
                     </section>
                 </main>
-                <? require_once("views/module/menu.php") ?>
+                <? //require_once("views/module/menu.php") ?>
             </div>
         </div>
         <div class="to-top" id="to-top">Наверх</div>
@@ -168,15 +174,13 @@
 <script src="bower/qtip2/jquery.qtip.min.js"></script>
 <!--Маска ввода-->
 <script src="bower/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
-<!--Скрипт-->
-<script src="js/registration.js"></script>
-
 
 <script src="js/select.js"></script>
 <script src='js/catalog-nav.js'></script>
 <script src='js/catalog-style.js'></script>
 <script src='js/to-top.js'></script>
 <script src="js/ajax.js"></script>
-
+<!--Скрипт-->
+<script src="js/registration.js "></script>
 </body>
 </html>

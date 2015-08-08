@@ -838,6 +838,19 @@ a, .link {
     display: none;}
 
 /*Общие классы*/
+.w_100{width: 100%;}
+.error{
+    background: rgba(255, 0, 0, .5);
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+}
+.sucess{
+    background: rgba(0, 255, 12, .5);
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+}
 .btn{
     padding: 5px 10px;
     background-color: rgb(72, 203, 232);
