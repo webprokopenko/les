@@ -1,3 +1,4 @@
+<? session_start();?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -35,41 +36,7 @@
 <!--        <div class="count_tov hidden" id="count_tov"></div>-->
 <!--    </aside>-->
     <div class="page page_sidebar_left page-catalog">
-        <header class="header">
-            <div class="page__container">
-                <div class="header__logo-container">
-                     <div class="header__logo logo">
-                         <a href="#" class="logo__link"><img src="img/logo_les.JPG" alt="DIAMANT PIVDEN LTD" class="logo__img">
-                         <span class="logo__text">Diamant Pivden LTD</span>
-                         </a>
-                     </div>
-                     <div class="header__contacts">
-                         <a href="tel:+380933559999" class="header__phone">
-                             <span class="header__phone-prefix">+3(8093)</span>
-                             <span class="header__phone-number">355 99 99</span>
-                         </a>
-                         <a href="mailto:liweitaoshi@gmail.com" class="header__email">liweitaoshi@gmail.com</a>
-                     </div>   
-                </div>
-
-                <nav class="header__menu">
-                    <ul class="menu list">
-                        <?
-                            $link = mysql_connect('localhost','root','') or die('Не удалось соединиться: '.mysql_error());
-                            mysql_select_db('m1') or die('Не удалось выбрать БД');
-
-                            $query="SELECT * FROM category";
-                            $result = mysql_query($query) or die ('Запрос не удался'.mysql_error());
-                            while ($doc = mysql_fetch_row($result))
-                            {
-                                echo "<li class='list__item menu__item'><a href='#' id='$doc[0]' class='menu__link'>$doc[1]</a></li>";
-                            }
-                        ?>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
+        <?require_once("views/module/header.php");?>
         <div class="page__wrapper">
         <div class="page__container">
             <div class="page__row clearfix">
@@ -182,5 +149,10 @@
     <script src='js/to-top.js'></script>
     <script src="js/ajax.js"></script>
     <!-- endbuild -->
+
+
+<script src="bower/bpopup/jquery.bpopup.min.js"></script>
+<!--Скрипт-->
+<script src="js/avtorization.js"></script>
 </body>
 </html>

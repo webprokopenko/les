@@ -4,8 +4,13 @@
             <div class="header__logo logo">
                 <a href="#" class="logo__link"><img src="../img/logo_les.JPG" alt="DIAMANT PIVDEN LTD" class="logo__img">
                     <span class="logo__text">Diamant Pivden LTD</span>
-                    <span><a href="#" id="avtorization">Вход</a></span>
-                    <span><a href="registration.php" id="registration">Регистрация</a></span>
+                    <?php if (!isset($_SESSION['user_id'])): ?>
+                        <span><a href="#" id="avtorization">Вход</a></span>
+                        <span><a href="registration.php" id="registration">Регистрация</a></span>
+                    <? else: ?>
+                        <span>Вы авторизованы</span>
+                        <span><a href="../../logout.php" id="exit">Выход</a></span>
+                    <?php endif; ?>
                 </a>
             </div>
             <div class="header__contacts">

@@ -1,3 +1,4 @@
+<? session_start(); ?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -147,6 +148,7 @@
 <script src='js/catalog-style.js'></script>
 <script src='js/to-top.js'></script>
 <script src="js/ajax.js"></script>
+
 <script src="bower/bpopup/jquery.bpopup.min.js"></script>
 <!--Скрипт-->
 <script src="js/registration.js "></script>

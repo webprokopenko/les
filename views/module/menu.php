@@ -35,10 +35,10 @@
                 </ul>
             </li>
             <li class="list__item catalog-nav__item">
-                <a href="#" class="catalog-nav__trigger catalog-nav__link">Рынок продаж и покупок</a>
-                <ul class="list catalog-nav catalog-nav__subnav">
-                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="#" class="catalog-nav__link catalog-nav__subnav-link">Продажа</a></li>
-                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="#" class="catalog-nav__link catalog-nav__subnav-link">Покупка</a></li>
+                <a href="#" id="market" class="catalog-nav__trigger catalog-nav__link">Рынок продаж и покупок</a>
+                <ul id="market_ul" class="list catalog-nav catalog-nav__subnav">
+                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="../../market_sale.php" class="catalog-nav__link catalog-nav__subnav-link">Продажа</a></li>
+                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="../../market_buy.php" class="catalog-nav__link catalog-nav__subnav-link">Покупка</a></li>
                 </ul>
             </li>
             <li class="list__item catalog-nav__item">

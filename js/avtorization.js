@@ -93,18 +93,14 @@ var pupups = (function(){
     },
         //Функция авторизации
      _avtorization = function(){
-        var form = $(this),
-            url = '../ajax/ajax_avtorization.php',
+        var form = $("#avtorization_send"),
+            url = 'ajax/ajax_avtorization.php',
             defObject = _ajaxForm(form,url);
+         console.log(form);
          console.log("AVTORIZATION BEGIN");
         defObject.done(function(ans){
-            var ul = $('#popup__msg');
-            ul.text('');
-            ul.text(ans['user']);
-            //for(var item in ans){
-            //    var markup = '<li>' + ans[item]['id_company'] + '</li>';
-            //    ul.append(markup);
-            //}
+            $(".popup__msg").text(ans.msg).removeClass('error').addClass("sucess");
+            window.location.href = "index.php";
         })
     },
     //Универсальная функция ajax
