@@ -1,100 +1,88 @@
 <?
-    require_once('/../include/config.php');
-    class Market{
+
+    class Market extends Mysql{
         function getCompany($id_company){
-            //$link = mysql_connect('localhost','root','') or die('Не удалось соединиться: '.mysql_error());
-            //mysql_select_db('m1') or die('Не удалось выбрать БД');
-            $query2=mysql_query("SELECT name_company FROM company WHERE id_company='$id_company'");
-            $company = mysql_result($query2,0);
-            return $company;
+            $query_test = $this->fetch_one("SELECT name_company FROM company WHERE id_company='$id_company'");
+            return $query_test['name_company'];
         }
         function getCountry($id_country){
-            $query=mysql_query("SELECT name_country FROM country WHERE id_country='$id_country'");
-            $country = mysql_result($query,0);
-            return $country;
+            $country=$this->fetch_one("SELECT name_country FROM country WHERE id_country='$id_country'");
+            return $country['name_country'];
         }
         function getCategory($id_category){
-            $query=mysql_query("SELECT name_category FROM prod_category WHERE id_category='$id_category'");
-            $category = mysql_result($query,0);
-            return $category;
+            $category=$this->fetch_one("SELECT name_category FROM prod_category WHERE id_category='$id_category'");
+            return $category['name_category'];
         }
         function getListCategory(){
-            //$link = mysql_connect('localhost','root','') or die('Не удалось соединиться: '.mysql_error());
-            //mysql_select_db('m1') or die('Не удалось выбрать БД');
-            $query2=mysql_query("SELECT * FROM prod_category")or die ('Запрос не удался'.mysql_error());
+            $query2=$this->fetch_array("SELECT * FROM prod_category");
             $list_category='';
-            while ($doc = mysql_fetch_row($query2))
-            {
-                $list_category.="<option value='$doc[0]'>$doc[1]</option>";
+            foreach ($query2 as $query){
+                $list_category.="<option value='".$query['id_category']."'>".$query['name_category']."</option>";
             }
             return $list_category;
         }
         function getListCountry(){
-            //$link = mysql_connect('localhost','root','') or die('Не удалось соединиться: '.mysql_error());
-            //mysql_select_db('m1') or die('Не удалось выбрать БД');
-            $query2=mysql_query("SELECT * FROM country")or die ('Запрос не удался'.mysql_error());
+            $query2=$this->fetch_array("SELECT * FROM country");
             $list_country='';
-            while ($doc = mysql_fetch_row($query2))
-            {
-                $list_country.="<option value='$doc[0]'>$doc[1]</option>";
+            foreach ($query2 as $query){
+                $list_country.="<option value='".$query['id_country']."'>".$query['name_country']."</option>";
             }
             return $list_country;
         }
         function getTelCompany($id_company){
-            //$link = mysql_connect('localhost','root','') or die('Не удалось соединиться: '.mysql_error());
-            //mysql_select_db('m1') or die('Не удалось выбрать БД');
-            $query2=mysql_query("SELECT tel FROM company WHERE id_company='$id_company'");
-            $tel_company = mysql_result($query2,0);
-            return $tel_company;
+            $tel_company=$this->fetch_one("SELECT tel FROM company WHERE id_company='$id_company'");
+            return $tel_company['tel'];
         }
-        function getBodyMarketSale(){
-
-            $query="SELECT * FROM market_tovar_q WHERE id_type_action='2' LIMIT 20";
-            $result = mysql_query($query) or die ('Запрос не удался'.mysql_error());
-            $body_market_sale='';
-            while ($doc = mysql_fetch_row($result))
-            {
-                $body_market_sale.="<li class='list__item catalog-item'>".
+        function getBodyMarket($type){
+            $query_test = $this->fetch_array("SELECT * FROM market_tovar_q WHERE id_type_action='$type'");
+            $body='';
+            foreach ($query_test as $array) {
+                $body.= "<li class='list__item catalog-item'>".
                     "<div class='catalog-item__img-wrapper'>";
-            if($doc[2]==1) $body_market_sale.= "<img src='img/krugluak.jpg' class='catalog-item__img' alt=''>";
-            elseif($doc[2]==2) $body_market_sale.= "<img src='img/doska.jpg' class='catalog-item__img' alt=''>";
-            elseif ($doc[2]==3) $body_market_sale.= "<img src='img/furnitura.jpg' class='catalog-item__img' alt=''>";
+                if($array['id_prod_category']==1) $body.= "<img src='img/krugluak.jpg' class='catalog-item__img' alt=''>";
+                elseif($array['id_prod_category']==2) $body.= "<img src='img/doska.jpg' class='catalog-item__img' alt=''>";
+                elseif ($array['id_prod_category']==3) $body.= "<img src='img/furnitura.jpg' class='catalog-item__img' alt=''>";
 
-            $body_market_sale.="</div><div class='catalog-item__body'>".
-                "<div class='catalog-item__name'>";
+                $body.=    "</div><div class='catalog-item__body'>".
+                    "<div class='catalog-item__name'>";
 
-            $body_market_sale.="<a href='#' class='catalog-item__link'>Компания: ";
-                //$body_market_sale.= $this->getCompany($doc[0]);
-                $body_market_sale.=" </a></div>";
-                $body_market_sale.=        "<div class='catalog-item__specs'>".
-                $body_market_sale.="<div class='field'>".
-                $body_market_sale.="<div class='field__name'>Категория</div>".
-                $body_market_sale.="<div class='field__value'>$rosw</div>".
-                $body_market_sale.="</div>".
-                $body_market_sale.="<div class='field'>".
-                $body_market_sale.="<div class='field__name'>Цена</div>".
-                $body_market_sale.="<div class='field__value'>$doc[4] грн.</div>".
-                $body_market_sale.="</div>".
-                $body_market_sale.="<div class='field'>".
-                $body_market_sale.="<div class='field__name'>Количество</div>".
-                $body_market_sale.="<div class='field__value'>$doc[5] м3</div>".
-                $body_market_sale.="</div>".
-                $body_market_sale.="<div class='field'>".
-                $body_market_sale.="<div class='field__name'>Происхождение</div>";
-                $body_market_sale.="<div class='field__value'>--</div>".
+                $body.= "<a href='#' class='catalog-item__link'>Компания: ";
+                $body.= $this->getCompany($array['id_company']);
+                $body.=" </a></div>";
+                $body.=        "<div class='catalog-item__specs'>".
+                    "<div class='field'>".
+                    "<div class='field__name'>Категория</div>".
+                    "<div class='field__value'>";
+                $body.= $this->getCategory($array['id_prod_category']);
+                $body.= "</div>".
+                    "</div>".
+                    "<div class='field'>".
+                    "<div class='field__name'>Цена</div>".
+                    "<div class='field__value'>".$array['cena']." грн.</div>".
+                    "</div>".
+                    "<div class='field'>".
+                    "<div class='field__name'>Количество</div>".
+                    "<div class='field__value'>".$array['col_vo']." м3</div>".
+                    "</div>".
+                    "<div class='field'>".
+                    "<div class='field__name'>Происхождение</div>";
+
+                $body.= "<div class='field__value'>";
+                $body.= $this->getCountry($array['id_country_proish']);
+                $body.="</div>".
                     "</div>".
                     "<div class='field'>".
                     "<div class='field__name'>Дата</div>".
-                    "<div class='field__value'>$doc[6]</div></div>".
+                    "<div class='field__value'>".$array['data_actuality']."</div></div>".
                     "<div class='field'>".
                     "<div class='field__name'>Телефон:</div>".
-                    //"<div class='field__value'>"; echo $this->getTelCompany($doc[0]);
-                $body_market_sale.= "</div></div>".
-                "</div>".
-                "</div>".
-                "</li>";
+                    "<div class='field__value'>".$this->getTelCompany($array['id_company']);
+                $body.= "</div></div>".
+                    "</div>".
+                    "</div>".
+                    "</li>";
             }
-            return $body_market_sale;
+            return $body;
         }
     }
 ?>

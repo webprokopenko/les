@@ -1,6 +1,6 @@
 var pupups_market_sale = (function(){
     var setUpListners = function(){
-            $('#add_market_sales').on('click', _openPopup);
+            $('#add_market_buy').on('click', _openPopup);
             $('#market_buy_send').on('submit', _privateFunc_valid);
             console.log("popups_market INIT!!!");
         },

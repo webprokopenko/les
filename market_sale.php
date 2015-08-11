@@ -1,5 +1,12 @@
-<? session_start(); ?>
-<? require_once('class/class.market.php'); $market = new Market();?>
+<?session_start();
+    require_once('include/config.php');
+    require_once('class/class.mysql.php');
+    require_once('class/class.market.php');
+
+    $mysql = new Mysql();
+    $mysql->connect($host,$user,$pass,$db);
+    $market = new Market();
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -63,58 +70,7 @@
                         </div>
                     <?php endif; ?>
                     <ul class="catalog catalog_style_grid list">
-                        <?
-                        $query="SELECT * FROM market_tovar_q WHERE id_type_action='2' LIMIT 20";
-                        $result = mysql_query($query) or die ('Запрос не удался'.mysql_error());
-                        while ($doc = mysql_fetch_row($result))
-                        {
-                            echo "<li class='list__item catalog-item'>".
-                                "<div class='catalog-item__img-wrapper'>";
-                            if($doc[2]==1) echo "<img src='img/krugluak.jpg' class='catalog-item__img' alt=''>";
-                            elseif($doc[2]==2) echo "<img src='img/doska.jpg' class='catalog-item__img' alt=''>";
-                            elseif ($doc[2]==3) echo "<img src='img/furnitura.jpg' class='catalog-item__img' alt=''>";
-
-                            echo    "</div><div class='catalog-item__body'>".
-                                "<div class='catalog-item__name'>";
-
-
-                            echo "<a href='#' class='catalog-item__link'>Компания: ";
-                            echo $market->getCompany($doc[1]);
-                            echo" </a></div>";
-                            echo        "<div class='catalog-item__specs'>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Категория</div>".
-                                "<div class='field__value'>";
-                            echo $market->getCategory($doc[2]);
-                            echo "</div>".
-                                "</div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Цена</div>".
-                                "<div class='field__value'>$doc[4] грн.</div>".
-                                "</div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Количество</div>".
-                                "<div class='field__value'>$doc[5] м3</div>".
-                                "</div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Происхождение</div>";
-
-                            echo "<div class='field__value'>";
-                            echo $market->getCountry($doc[3]);
-                            echo"</div>".
-                                "</div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Дата</div>".
-                                "<div class='field__value'>$doc[6]</div></div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Телефон:</div>".
-                                "<div class='field__value'>"; echo $market->getTelCompany($doc[1]);
-                                echo "</div></div>".
-                                "</div>".
-                                "</div>".
-                                "</li>";
-                        }
-                        ?>
+                        <?echo $market->getBodyMarket(2)?>
                     </ul>
                 </section>
             </main>
@@ -182,3 +138,4 @@
 </script>
 </body>
 </html>
+<?$mysql->close();?>

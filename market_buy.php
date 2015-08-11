@@ -1,12 +1,11 @@
 <?session_start();
-    require_once('class/class.market.php');
     require_once('include/config.php');
     require_once('class/class.mysql.php');
-    $market = new Market();
+    require_once('class/class.market.php');
+
     $mysql = new Mysql();
     $mysql->connect($host,$user,$pass,$db);
-    $query_test = $mysql->fetch_array("SELECT * FROM market_tovar_q");
-    print_r($query_test);
+    $market = new Market();
 ?>
 <!doctype html>
 <html lang="ru">
@@ -65,63 +64,13 @@
                         </div>
                     <? else: ?>
                         <div class="add_obj">
-                            <a href="#" id="add_market_sales" class="add_obj-item">
+                            <a href="#" id="add_market_buy" class="add_obj-item">
                                 Добавить объявление о покупке<br>
                             </a>
                         </div>
                     <?php endif; ?>
                     <ul class="catalog catalog_style_grid list">
-                        <?
-                        $query="SELECT * FROM market_tovar_q WHERE id_type_action='1' LIMIT 20";
-                        $result = mysql_query($query) or die ('Запрос не удался'.mysql_error());
-                        while ($doc = mysql_fetch_row($result))
-                        {
-                            echo "<li class='list__item catalog-item'>".
-                                "<div class='catalog-item__img-wrapper'>";
-                            if($doc[2]==1) echo "<img src='img/krugluak.jpg' class='catalog-item__img' alt=''>";
-                            elseif($doc[2]==2) echo "<img src='img/doska.jpg' class='catalog-item__img' alt=''>";
-                            elseif ($doc[2]==3) echo "<img src='img/furnitura.jpg' class='catalog-item__img' alt=''>";
-
-                            echo    "</div><div class='catalog-item__body'>".
-                                "<div class='catalog-item__name'>";
-
-                            echo "<a href='#' class='catalog-item__link'>Компания: ";
-                            echo $market->getCompany($doc[1]);
-                            echo" </a></div>";
-                            echo        "<div class='catalog-item__specs'>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Категория</div>".
-                                "<div class='field__value'>";
-                            echo $market->getCategory($doc[2]);
-                            echo "</div>".
-                                "</div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Цена</div>".
-                                "<div class='field__value'>$doc[4] грн.</div>".
-                                "</div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Количество</div>".
-                                "<div class='field__value'>$doc[5] м3</div>".
-                                "</div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Происхождение</div>";
-
-                            echo "<div class='field__value'>";
-                            echo $market->getCountry($doc[3]);
-                            echo"</div>".
-                                "</div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Дата</div>".
-                                "<div class='field__value'>$doc[6]</div></div>".
-                                "<div class='field'>".
-                                "<div class='field__name'>Телефон:</div>".
-                                "<div class='field__value'>"; echo $market->getTelCompany($doc[1]);
-                            echo "</div></div>".
-                                "</div>".
-                                "</div>".
-                                "</li>";
-                        }
-                        ?>
+                        <? echo $market->getBodyMarket(1);?>
                     </ul>
                 </section>
             </main>
@@ -189,3 +138,4 @@
 </script>
 </body>
 </html>
+<?$mysql->close();?>
