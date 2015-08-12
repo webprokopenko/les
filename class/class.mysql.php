@@ -22,10 +22,11 @@ Class Mysql{
         $this->result = mysql_query($query);
         if($this->result === FALSE)
         {
-            echo $query;
-            echo("Error SQL");
-            exit;
+            return false;
+        }else{
+            return true;
         }
+
     }
 
     function fetch_one($query)

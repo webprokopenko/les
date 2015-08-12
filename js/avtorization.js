@@ -22,8 +22,7 @@ var pupups = (function(){
             email =  form.find('input[type="email"]'),
             pass =  form.find('input[type="password"]'),
             tel = form.find('tel');
-        //input = form.find('input').not('input[type="file"], input[type="hidden"]');
-        //message = $('textarea'),
+
         pattern_email =  /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
         for(var i=0, max=input_form.length; i<max; i+=1){
@@ -96,11 +95,13 @@ var pupups = (function(){
         var form = $("#avtorization_send"),
             url = 'ajax/ajax_avtorization.php',
             defObject = _ajaxForm(form,url);
-         console.log(form);
-         console.log("AVTORIZATION BEGIN");
         defObject.done(function(ans){
-            $(".popup__msg").text(ans.msg).removeClass('error').addClass("sucess");
-            window.location.href = "index.php";
+            if(ans.error==0){
+                $(".popup__msg").text(ans.msg).removeClass('error').addClass("sucess");
+                window.location.href = "index.php";
+            }else{
+                $(".popup__msg").text(ans.msg).removeClass('sucess').addClass("error");
+            }
         })
     },
     //Универсальная функция ajax

@@ -1,6 +1,5 @@
 <?session_start();
     require_once('include/config.php');
-    require_once('class/class.mysql.php');
     require_once('class/class.market.php');
 
     $mysql = new Mysql();
@@ -49,7 +48,7 @@
             <div class="page__row clearfix">
                 <ul class="breadcrumbs list">
                     <li class="list__item breadcrumbs__item">
-                        <a href="#" class="breadcrumbs__link">Главная</a>
+                        <a href="index.php" class="breadcrumbs__link">Главная</a>
                     </li>
                     <li class="list__item breadcrumbs__item">
                         Рынок продаж и покупок - Рынок продаж - <b>Продажа</b>
@@ -106,6 +105,7 @@
             <input type="text" class="prog_input" placeholder="Введите цену" name="cena" id="cena" qtip-position="left" qtip-content="Вы не ввели цену">
             <label for="pass" class="prog_span">Количество</label>
             <input type="text" class="prog_input" placeholder="Введите количество" name="col_vo" id="col_vo" qtip-position="left" qtip-content="Вы не ввели количество">
+            <input type="hidden" name="token" id="token" value="<?=$market::token()?>"/>
             <div class="prog_row">
                 <button type="submit" class="btn">Добавить объявление о продаже</button>
             </div>

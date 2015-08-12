@@ -7,7 +7,6 @@
     <div class="add_obj">
         <a href="#" id="add_market_sale" class="add_obj-item">
             Добавить объявление<br>
-            <img src="../../img/add.jpg" alt=""/>
         </a>
     </div>
 <?php endif; ?>

@@ -74,7 +74,15 @@
             <div class="page__row page__middle clearfix">
                 <main class="content page__region">
                     <section class="content__block">
-                        <? require_once("/views/module/join_us.php")?>
+                        <?php if (!isset($_SESSION['user_id'])): ?>
+                            <div class="join_us">
+                                <h3>Хотите БЕСПЛАТНО оставлять свои объявления на нашем сайте - <a href="../../registration.php">регистрируйтесь</a></h3>
+                            </div>
+                        <? else: ?>
+                            <div class="add_obj">
+                                
+                            </div>
+                        <?php endif; ?>
                         <ul class="catalog catalog_style_grid list">
                             <?
                             $query="SELECT * FROM product_tovari LIMIT 20";

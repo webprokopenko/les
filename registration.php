@@ -108,7 +108,7 @@
                                     <div class="form-line clearfix">
                                         <div class="form-group textarea">
                                             <label for="message" class="label">Кратко о Вашей компании</label>
-                                            <textarea name="opisanie" id="opisanie" rows="4" class="textarea" placeholder="Кратко чем занимается компания,ваши лучшие стороны" qtip-position="left" qtip-content="Вы не ввели информацию"></textarea>
+                                            <textarea name="opisanie"  id="opisanie" rows="4" class="input h_a" placeholder="Кратко чем занимается компания,ваши лучшие стороны" qtip-position="left" qtip-content="Вы не ввели информацию"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-line clearfix">

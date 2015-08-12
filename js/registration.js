@@ -107,10 +107,36 @@ var FormSender = (function(){
             defObject = _ajaxForm(form,url),
             message_group = $('.registration__msg');
         defObject.done(function(ans){
-            message_group.text(ans.msg).removeClass('error').addClass('sucess');
-            console.log(message_group);
+            if(ans.error===0){
+                message_group.text(ans.msg).removeClass('error').addClass("sucess");
+                _ajaxForm_redirect(ans.company,ans.pass);
+            }
+            else{
+                message_group.text(ans.msg).removeClass('sucess').addClass("error");
+            }
         })
     }
+    //Функция ajax для редиректа при успешной регистрации
+    function _ajaxForm_redirect(company,passw){
+            defObj = $.ajax({
+                type: "POST",
+                url: 'ajax/ajax_avtorization.php',
+                dataType: "JSON",
+                data: {
+                    login: company,
+                    pass: passw,
+                    redirect: true
+                }
+            }).fail(function(){
+                console.log('Проблемы на стороне сервера');
+            });
+            defObj.done(function(){
+                console.log(company);
+                console.log(passw);
+                window.location.href = "index.php";
+            });
+    }
+
     //Универсальная функция ajax
     function _ajaxForm(form,url){
         var data = form.serialize(),

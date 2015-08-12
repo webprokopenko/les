@@ -839,6 +839,7 @@ a, .link {
 
 /*Общие классы*/
 .w_100{width: 100% !important;}
+.h_a{height: auto !important;}
 .error{
     background: rgba(255, 0, 0, .5);
     color: #ffffff;

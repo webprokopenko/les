@@ -2,7 +2,6 @@ var pupups_market_sale = (function(){
     var setUpListners = function(){
             $('#add_market_sales').on('click', _openPopup);
             $('#market_sale_send').on('submit', _privateFunc_valid);
-            console.log("popups_market INIT!!!");
         },
         _removeError = function(){
             var element = $(this);
@@ -30,10 +29,6 @@ var pupups_market_sale = (function(){
                     valid = false;
                     _createQtip(element,pos);
                 }
-            }
-            if(empty==true) {
-                console.log("empty true");
-
             }
             if(valid==true){
                 _market_sale_add();
@@ -76,16 +71,19 @@ var pupups_market_sale = (function(){
                 }
             }).trigger('show');
         },
-    //Функция авторизации
+    //Функция добавления объявления о продаже
         _market_sale_add = function(){
             var form = $("#market_sale_send"),
                 url = 'ajax/ajax_add_market_sale.php',
                 defObject = _ajaxForm(form,url);
-            console.log(form);
-            console.log("MARKET ADD BEGIN");
             defObject.done(function(ans){
-                $(".popup__msg-sale").text(ans.msg).removeClass('error').addClass("sucess");
-                window.location.href = "market_sale.php";
+                if(ans.error===0){
+                    $(".popup__msg-sale").text(ans.msg).removeClass('error').addClass("sucess");
+                    window.location.href = "market_sale.php";
+                }
+                else{
+                    $(".popup__msg-sale").text(ans.msg).removeClass('sucess').addClass("error");
+                }
             })
         },
     //Универсальная функция ajax
@@ -96,10 +94,10 @@ var pupups_market_sale = (function(){
                     url: url,
                     dataType: "JSON",
                     data: data
-                }).fail(function(){
+                }).fail(function(ans){
                     console.log('Проблемы на стороне сервера');
+                    $(".popup__msg-sale").text(ans.msg).removeClass('sucess').addClass("error");
                 });
-            console.log(data);
             return defObj;
         },
         _openPopup = function(e){

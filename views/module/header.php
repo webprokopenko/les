@@ -1,3 +1,10 @@
+<?
+require_once("/../../include/config.php");
+require_once("/../../class/class.common.php");
+$mysql = new Mysql();
+$mysql->connect($host, $user, $pass, $db);
+$common = new Common();
+?>
 <header class="header">
     <div class="page__container">
         <div class="header__logo-container">
@@ -54,6 +61,7 @@
             <input type="email" class="prog_input" placeholder="Введите Email" name="login" id="login" qtip-position="left" qtip-content="Вы не ввели логин">
             <label for="pass" class="prog_span">Пароль</label>
             <input type="password" class="prog_input" placeholder="Введите пароль" name="pass" id="pass" qtip-position="left" qtip-content="Вы не ввели пароль">
+            <input name="token" id="token" value="<?=$common->token();?>" type="hidden"/>
             <div class="prog_row">
                 <button type="submit" class="btn">Вход</button>
             </div>
