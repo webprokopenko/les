@@ -905,7 +905,7 @@ a, .link {
 /*Конец формы обратной связи*/
 
 /*Модальное окно авторизации*/
-#modal,#modal_market_sale,#modal_market_buy{
+#modal,#modal_market_sale,#modal_market_buy,#modal_equipment_sale,#modal_equipment_buy{
     display: none;
 }
 .popup_add_prog{

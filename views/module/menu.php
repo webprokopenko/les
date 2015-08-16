@@ -49,10 +49,10 @@
                 </ul>
             </li>
             <li class="list__item catalog-nav__item">
-                <a href="#" class="catalog-nav__trigger catalog-nav__link">Оборудование</a>
-                <ul class="list catalog-nav catalog-nav__subnav">
-                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="#" class="catalog-nav__link catalog-nav__subnav-link">Продажа</a></li>
-                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="#" class="catalog-nav__link catalog-nav__subnav-link">Покупка</a></li>
+                <a href="#" id="equipment" class="catalog-nav__trigger catalog-nav__link">Оборудование</a>
+                <ul id="equipment_ul" class="list catalog-nav catalog-nav__subnav">
+                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="../../equipment_sale.php" class="catalog-nav__link catalog-nav__subnav-link">Продажа</a></li>
+                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="../../equipment_buy.php" class="catalog-nav__link catalog-nav__subnav-link">Покупка</a></li>
                 </ul>
             </li>
             <li class="list__item catalog-nav__item">

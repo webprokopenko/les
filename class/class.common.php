@@ -33,6 +33,18 @@ Class Common extends Mysql{
         $tel_company=$this->fetch_one("SELECT tel FROM company WHERE id_company='$id_company'");
         return $tel_company['tel'];
     }
+    function getStatusEquipment($id_equipment){
+        $status_equipment=$this->fetch_one("SELECT name_status_equipment FROM status_equipment_slv WHERE id_status_equipment='$id_equipment'");
+        return $status_equipment['name_status_equipment'];
+    }
+    function getListStatusEquipment(){
+        $query2=$this->fetch_array("SELECT * FROM status_equipment_slv");
+        $list_status_equipment='';
+        foreach ($query2 as $query){
+            $list_status_equipment.="<option value='".$query['id_status_equipment']."'>".$query['name_status_equipment']."</option>";
+        }
+        return $list_status_equipment;
+    }
     static function token(){
         $_SESSION['token'] = md5(uniqid(mt_rand(), true));
         return $_SESSION['token'];
