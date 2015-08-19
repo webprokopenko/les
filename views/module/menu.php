@@ -42,10 +42,13 @@
                 </ul>
             </li>
             <li class="list__item catalog-nav__item">
-                <a href="#" class="catalog-nav__trigger catalog-nav__link">Технологии</a>
-                <ul class="list catalog-nav catalog-nav__subnav">
+                <a href="#" id="technology" class="catalog-nav__trigger catalog-nav__link">Технологии</a>
+                <ul id="technology_ul" class="list catalog-nav catalog-nav__subnav">
                     <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="#" class="catalog-nav__link catalog-nav__subnav-link">Технология</a></li>
-                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="#" class="catalog-nav__link catalog-nav__subnav-link">Реклама технологий</a></li>
+                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="../../technology_buy.php" class="catalog-nav__link catalog-nav__subnav-link">Покупка технологий</a></li>
+                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="../../technology_sale.php" class="catalog-nav__link catalog-nav__subnav-link">Продажа технологий</a></li>
+                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="../../partners.php" class="catalog-nav__link catalog-nav__subnav-link">Ищу партнера</a></li>
+                    <li class="list__item catalog-nav__item catalog-nav__subnav-item"><a href="../../investors.php" class="catalog-nav__link catalog-nav__subnav-link">Ищу инвестора</a></li>
                 </ul>
             </li>
             <li class="list__item catalog-nav__item">

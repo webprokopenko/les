@@ -1,6 +1,10 @@
 <?
 require_once('class.mysql.php');
 Class Common extends Mysql{
+    function getUserName($id_company){
+        $query_test = $this->fetch_one("SELECT name_sotr FROM company WHERE id_company='$id_company'");
+        return $query_test['name_sotr'];
+    }
     function getCompany($id_company){
         $query_test = $this->fetch_one("SELECT name_company FROM company WHERE id_company='$id_company'");
         return $query_test['name_company'];

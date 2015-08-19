@@ -1,17 +1,29 @@
 <?php
-
-
-
 session_start();
-
 if(($_SERVER['REQUEST_METHOD'] == "POST")&&($_POST['token']==$_SESSION['token'])&&(!empty($_FILES["foto_equipment"]))){
     if ($_FILES["foto_equipment"]["error"] == UPLOAD_ERR_OK) {
-            $name = "../uploads/".md5(uniqid($_FILES['foto_equipment']['name'])).".jpg";
-            if(move_uploaded_file( $_FILES["foto_equipment"]["tmp_name"], $name )){
-                $data['file_name']=$name;
-            }else{echo "FILE NOT MOVED ";};
-    }else echo "ERROR";
-
+            $name = md5(uniqid($_FILES['foto_equipment']['name'])).".jpg";
+            $full_name = "../uploads/".$name;
+            if(move_uploaded_file( $_FILES["foto_equipment"]["tmp_name"], $full_name )){
+                $data["file_name"]=$name;
+                $data["error"]=0;
+                header("Content-Type: application/json");
+                echo json_encode($data);
+                exit;
+            }else{
+                $data["error"]=1;
+                $data["msg"]='Ошибка перемещения файла';
+                header("Content-Type: application/json");
+                echo json_encode($data);
+                exit;
+            }
+    }else{
+        $data["error"]=1;
+        $data["msg"]='Не надо ломать наш сайт';
+        header("Content-Type: application/json");
+        echo json_encode($data);
+        exit;
+    }
 }
 else{
 if (($_SERVER['REQUEST_METHOD'] == "POST")&&($_POST['token']==$_SESSION['token'])) {
@@ -35,14 +47,13 @@ if (($_SERVER['REQUEST_METHOD'] == "POST")&&($_POST['token']==$_SESSION['token']
             $cena = trim(htmlspecialchars(mysql_real_escape_string($_POST['cena'])));
             $data_actuality = date("Y-m-d");
             $id_type_action = 2; //Тип объявления - 1-покупка 2-продажа
+            if(!empty($_POST['filename'])) $filename = trim(htmlspecialchars(mysql_real_escape_string($_POST['filename']))); else $filename=NULL;
 
-//            $data = $equipment->insertEquipment($id_company, $nazvanie, $model, $status_equipment, $cena, $data_actuality,$id_type_action);
-//            if($data){
-//                $data["error"]=0;
-//                $data["msg"]="Вы успешно добавили объявление в категорию Оборудование - Продажа";
-//            }
-            $data['files']=$_FILES;
-            $data['post']=$_POST;
+            $data = $equipment->insertEquipment($id_company, $nazvanie, $model, $status_equipment, $cena, $data_actuality,$id_type_action,$filename);
+            if($data){
+                $data["error"]=0;
+                $data["msg"]="Вы успешно добавили объявление в категорию Оборудование - Продажа";
+            }
             header("Content-Type: application/json");
             echo json_encode($data);
             exit;

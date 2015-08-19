@@ -7,7 +7,9 @@ class Equipment extends Common{
         foreach ($query_test as $array) {
             $body.= "<li class='list__item catalog-item'>".
                 "<div class='catalog-item__img-wrapper'>";
-            $body.= "<img src='img/equipment.jpg' class='catalog-item__img' alt=''>";
+            if(($array['foto']!=NULL)&&(file_exists("uploads/{$array['foto']}"))){
+                $body.="<img src='uploads/{$array['foto']}' class='catalog-item__img' alt='Фото оборудования'>";
+            }else{$body.= "<img src='img/no_photo.jpg' class='catalog-item__img' alt='Фото оборудования'>";}
 
             $body.=    "</div><div class='catalog-item__body'>".
                 "<div class='catalog-item__name'>";
@@ -31,6 +33,10 @@ class Equipment extends Common{
                 "<div class='field__value'>".$this->getStatusEquipment($array['status_equipment'])."</div>".
                 "</div>".
                 "<div class='field'>".
+                "<div class='field__name'>Цена</div>".
+                "<div class='field__value'>".$array['cena']." грн.</div>".
+                "</div>".
+                "<div class='field'>".
                 "<div class='field__name'>Дата</div>".
                 "<div class='field__value'>".$array['data_actuality']."</div></div>".
                 "<div class='field'>".
@@ -44,9 +50,9 @@ class Equipment extends Common{
         }
         return $body;
     }
-    function insertEquipment($id_company,$nazvanie,$model,$status_equipment,$cena,$data_actuality, $id_type_action){
-        $insert_market_query = "INSERT INTO equipment (id_company,nazvanie, model, status_equipment,cena, data_actuality, id_type_action)";
-        $insert_market_query.= " VALUES('$id_company', '$nazvanie', '$model','$status_equipment' ,'$cena', '$data_actuality', '$id_type_action')";
+    function insertEquipment($id_company,$nazvanie,$model,$status_equipment,$cena,$data_actuality, $id_type_action,$filename){
+        $insert_market_query = "INSERT INTO equipment (id_company,nazvanie, model, status_equipment,cena, data_actuality, id_type_action,foto)";
+        $insert_market_query.= " VALUES('$id_company', '$nazvanie', '$model','$status_equipment' ,'$cena', '$data_actuality', '$id_type_action','$filename')";
         $result = $this->query($insert_market_query);
         if($result) {
             $data['error'] = 0;

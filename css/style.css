@@ -316,18 +316,19 @@ a, .link {
 
 .footer__logo {
   position: absolute;
-  top: 50%;
   left: 0;
   float: left;
   margin-top: -19px; }
 
 .footer__logo-link {
   display: block;
-  width: 139px;
-  height: 39px;
+  /*width: 300px;*/
+  /*height: 100px;*/
   text-indent: -9999px;
-  background: url(../img/logo_les.JPG) center no-repeat; }
-
+  background: url(../img/ft_logo2.png) center no-repeat; }
+.footer__logo-img{
+    width: 250px;
+}
 .footer__nav {
   float: left; }
 
@@ -389,7 +390,7 @@ a, .link {
   float: left;
   margin-top: 2px; }
 .logo__img{
-    width: 100px;
+    width: 250px;
 }
 .header__contacts {
   position: absolute;
@@ -834,10 +835,43 @@ a, .link {
     /*text-align: center;*/
 /*}*/
 /*Конец конзины*/
+/*Верхний блок информации о пользователе*/
+.top__user-info{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    background: rgba(223, 239, 249, .5);
+    z-index: 100;
+}
+.presentation{
+    float:right;
+    margin-left: 50px;
+}
+.top__link{
+    color: rgb(0,112,105);
+}
+/*Конец верхнего блока информации о пользователе*/
 .hidden{
     display: none;}
+/*окно добавления оборудования*/
+.download_img{
+    text-align: center;
+    margin-top: 10px;
+}
+.download_img-wrapp{
+    border: 1px solid black;
+}
+.download_img img{
+    margin-top: 5px;
+    max-width:200px;
+    height: 130px;
+}
+/*конец окна добавления оборудования*/
 
 /*Общие классы*/
+.f_left{float:left;}
+.f_right{float:right;}
 .w_100{width: 100% !important;}
 .h_a{height: auto !important;}
 .error{
@@ -905,7 +939,7 @@ a, .link {
 /*Конец формы обратной связи*/
 
 /*Модальное окно авторизации*/
-#modal,#modal_market_sale,#modal_market_buy,#modal_equipment_sale,#modal_equipment_buy{
+#modal,#modal_market_sale,#modal_market_buy,#modal_equipment_sale,#modal_equipment_buy,#modal_technology_buy,#modal_technology_sale{
     display: none;
 }
 .popup_add_prog{
@@ -973,6 +1007,7 @@ a, .link {
 .prog_row{
     text-align: center;
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 .popup_prog_header .close{
     position: absolute;

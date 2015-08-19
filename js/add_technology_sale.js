@@ -1,24 +1,7 @@
-var pupups_equipment_sale = (function(){
+var pupups_technology_sale = (function(){
     var setUpListners = function(){
-            $('#add_equipment_sales').on('click', _openPopup);
-            $('#market_equipment_send').on('submit', _privateFunc_valid);
-            $(document).ready(function(){
-                var url = 'ajax/ajax_add_equipment_sale.php';
-                $('#foto_equipment').fileupload({
-                    url: url,
-                    dataType: 'json',
-                    done: function (e,ans) {
-                        if(ans.jqXHR.responseJSON.error==0){
-                            document.getElementById("filename").value = ans.jqXHR.responseJSON.file_name;
-                            $("#download_img").html("<div class='download_img-wrapp'><img src='../uploads/"+ans.jqXHR.responseJSON.file_name+"'></div>");
-                        }
-                        else{
-                            $(".popup__msg-sale").text(ans.jqXHR.responseJSON.msg).removeClass('sucess').addClass("error");
-
-                        }
-                    }
-                });
-            });
+            $('#add_technology').on('click', _openPopup);
+            $('#market_technology_send').on('submit', _privateFunc_valid);
         },
         _removeError = function(){
             var element = $(this);
@@ -35,7 +18,7 @@ var pupups_equipment_sale = (function(){
             var valid=true,
                 empty=true,
                 form = $(this),
-                input_form = form.find('input').not('input[type="file"], input[type="hidden"]');
+                input_form = form.find('textarea').not('input[type="file"], input[type="hidden"]');
 
             for(var i=0, max=input_form.length; i<max; i+=1){
                 var element = $(input_form[i]),
@@ -64,7 +47,7 @@ var pupups_equipment_sale = (function(){
             }else{
                 position = {
                     my: 'right center',
-                    at: 'left center',
+                    at: 'left center'
                 }
             }
             // инициализация тултипа
@@ -90,35 +73,35 @@ var pupups_equipment_sale = (function(){
         },
     //Функция добавления объявления о продаже
         _market_equipment_add = function(){
-            var form = $("#market_equipment_send"),
-                url = 'ajax/ajax_add_equipment_sale.php',
+            var form = $("#market_technology_send"),
+                url = 'ajax/ajax_add_technology_sale.php',
                 defObject = _ajaxForm(form,url);
             defObject.done(function(ans){
                 if(ans.error===0){
-                    $(".popup__msg-sale").text(ans.msg).removeClass('error').addClass("sucess");
-                    window.location.href = "equipment_sale.php";
+                    $(".popup__msg").text(ans.msg).removeClass('error').addClass("sucess");
+                    window.location.href = "technology_sale.php";
                 }
                 else{
-                    $(".popup__msg-sale").text(ans.msg).removeClass('sucess').addClass("error");
+                    $(".popup__msg").text(ans.msg).removeClass('sucess').addClass("error");
                 }
             })
         },
     //Универсальная функция ajax
         _ajaxForm =   function (form,url){
             var data = form.serialize();
-                defObj = $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: data
-                }).fail(function(ans){
-                    console.log('Проблемы на стороне сервера');
-                    $(".popup__msg-sale").text(ans.msg).removeClass('sucess').addClass("error");
-                });
+            defObj = $.ajax({
+                type: "POST",
+                url: url,
+                data: data
+            }).fail(function(ans){
+                console.log('Проблемы на стороне сервера');
+                $(".popup__msg").text(ans.msg).removeClass('sucess').addClass("error");
+            });
             return defObj;
         },
         _openPopup = function(e){
             e.preventDefault();
-            $('#modal_equipment_sale').bPopup({
+            $('#modal_technology_sale').bPopup({
                 speed: 250,
                 transition: 'slideDown',
                 onClose: _clearAll
@@ -133,6 +116,6 @@ var pupups_equipment_sale = (function(){
 }());
 
 $(document).ready(function(){
-    pupups_equipment_sale.init();
+    pupups_technology_sale.init();
 
 });

@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer__inner page__container">
         <div class="footer__logo">
-            <a href="#" class="footer__logo-link">ЭпплShop</a>
+            <img src="../img/ft_logo4.png" alt="" class="footer__logo-img"/>
         </div>
         <div class="page__region">
             <div class="footer__nav">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="footer__extlinks-row">
                     <ul class="socials list">
-                        <li class="list__item socials__item"><a href="#" class="social social_vk"><span class="social__text">Вконтакте</span></a></li>
+                        <li class="list__item socials__item"><a href="https://vk.com/public100289867" target="_blank" class="social social_vk"><span class="social__text">Вконтакте</span></a></li>
                         <li class="list__item socials__item"><a href="#" class="social social_fb"><span class="social__text">Facebook</span></a></li>
                         <li class="list__item socials__item"><a href="#" class="social social_tw"><span class="social__text">Twitter</span></a></li>
                     </ul>

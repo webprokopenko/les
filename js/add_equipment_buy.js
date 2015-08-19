@@ -1,9 +1,9 @@
-var pupups_equipment_sale = (function(){
+var pupups_equipment_buy = (function(){
     var setUpListners = function(){
-            $('#add_equipment_sales').on('click', _openPopup);
+            $('#add_equipment_buy').on('click', _openPopup);
             $('#market_equipment_send').on('submit', _privateFunc_valid);
             $(document).ready(function(){
-                var url = 'ajax/ajax_add_equipment_sale.php';
+                var url = 'ajax/ajax_add_equipment_buy.php';
                 $('#foto_equipment').fileupload({
                     url: url,
                     dataType: 'json',
@@ -13,7 +13,7 @@ var pupups_equipment_sale = (function(){
                             $("#download_img").html("<div class='download_img-wrapp'><img src='../uploads/"+ans.jqXHR.responseJSON.file_name+"'></div>");
                         }
                         else{
-                            $(".popup__msg-sale").text(ans.jqXHR.responseJSON.msg).removeClass('sucess').addClass("error");
+                            $(".popup__msg-buy").text(ans.jqXHR.responseJSON.msg).removeClass('sucess').addClass("error");
 
                         }
                     }
@@ -91,34 +91,34 @@ var pupups_equipment_sale = (function(){
     //Функция добавления объявления о продаже
         _market_equipment_add = function(){
             var form = $("#market_equipment_send"),
-                url = 'ajax/ajax_add_equipment_sale.php',
+                url = 'ajax/ajax_add_equipment_buy.php',
                 defObject = _ajaxForm(form,url);
             defObject.done(function(ans){
                 if(ans.error===0){
-                    $(".popup__msg-sale").text(ans.msg).removeClass('error').addClass("sucess");
-                    window.location.href = "equipment_sale.php";
+                    $(".popup__msg-buy").text(ans.msg).removeClass('error').addClass("sucess");
+                    window.location.href = "equipment_buy.php";
                 }
                 else{
-                    $(".popup__msg-sale").text(ans.msg).removeClass('sucess').addClass("error");
+                    $(".popup__msg-buy").text(ans.msg).removeClass('sucess').addClass("error");
                 }
             })
         },
     //Универсальная функция ajax
         _ajaxForm =   function (form,url){
             var data = form.serialize();
-                defObj = $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: data
-                }).fail(function(ans){
-                    console.log('Проблемы на стороне сервера');
-                    $(".popup__msg-sale").text(ans.msg).removeClass('sucess').addClass("error");
-                });
+            defObj = $.ajax({
+                type: "POST",
+                url: url,
+                data: data
+            }).fail(function(ans){
+                console.log('Проблемы на стороне сервера');
+                $(".popup__msg-buy").text(ans.msg).removeClass('sucess').addClass("error");
+            });
             return defObj;
         },
         _openPopup = function(e){
             e.preventDefault();
-            $('#modal_equipment_sale').bPopup({
+            $('#modal_equipment_buy').bPopup({
                 speed: 250,
                 transition: 'slideDown',
                 onClose: _clearAll
@@ -133,6 +133,6 @@ var pupups_equipment_sale = (function(){
 }());
 
 $(document).ready(function(){
-    pupups_equipment_sale.init();
+    pupups_equipment_buy.init();
 
 });

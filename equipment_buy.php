@@ -51,7 +51,7 @@ $equipment = new Equipment();
                             <a href="index.php" class="breadcrumbs__link">Главная</a>
                         </li>
                         <li class="list__item breadcrumbs__item">
-                            Оборудование - <b>Продажа</b>
+                            Оборудование - <b>Покупка</b>
                         </li>
                     </ul>
                 </div>
@@ -63,13 +63,13 @@ $equipment = new Equipment();
                             </div>
                         <? else: ?>
                             <div class="add_obj">
-                                <a href="#" id="add_equipment_sales" class="add_obj-item">
-                                    Добавить объявление о продаже оборудования<br>
+                                <a href="#" id="add_equipment_buy" class="add_obj-item">
+                                    Добавить объявление о покупке оборудования<br>
                                 </a>
                             </div>
                         <?php endif; ?>
                         <ul class="catalog catalog_style_grid list">
-                            <?=$equipment->getBodyEquipment(2)?>
+                            <?=$equipment->getBodyEquipment(1)?>
                         </ul>
                     </section>
                 </main>
@@ -80,43 +80,43 @@ $equipment = new Equipment();
         <? require_once("/views/module/footer.php")?>
     </div>
     <?php if($_SESSION['user_id']):?>
-    <!-- Начало окна добавления продажи -->
-    <div class="popup_add_prog" id="modal_equipment_sale">
-        <div class="popup_prog_header">
-            <button type="button" class="close" id="close"></button>
-            <div class="prog_header_text">
-                Добавить объявление о продаже
-            </div>
-        </div>
-        <div class="popup_prog_body">
-            <div class="popup__msg-sale">
-            </div>
-            <form action="../../ajax/ajax_add_equipment_sale.php" class="form"  id="market_equipment_send"  method="post" enctype="multipart/form-data">
-                <label for="company" class="prog_span">Компания: <b><?=$equipment->getCompany($_SESSION['user_id']);?></b></label>
-                <label class="prog_span">Категория объявления: <b>Оборудование - Продажа</b></label>
-                <label for="nazvanie" class="prog_span">Название:</label>
-                <input type="text" class="prog_input" placeholder="Введите название оборудования" name="nazvanie" id="nazvanie" qtip-position="left" qtip-content="Вы не ввели название оборудования">
-                <label for="model" class="prog_span">Модель:</label>
-                <input type="text" class="prog_input" placeholder="Введите модель оборудования" name="model" id="model" qtip-position="left" qtip-content="Вы не ввели модель оборудования">
-                <label for="model" class="prog_span">Фото оборудования:</label>
-                <input type="file" name="foto_equipment" id="foto_equipment"/>
-                <input type="hidden" id="filename" name="filename" value=""/>
-                <div class="download_img" id="download_img"></div>
-                <label for="status_equipment" class="prog_span">Состояние оборудования:</label>
-                <select class="select catalog-style__select" name="status_equipment" id="status_equipment">
-                    <?=$equipment->getListStatusEquipment()?>
-                </select>
-                <label for="cena" class="prog_span">Цена</label>
-                <input type="text" class="prog_input" placeholder="Введите цену" name="cena" id="cena" qtip-position="left" qtip-content="Вы не ввели цену">
-
-                <input type="hidden" name="token" id="token" value="<?=$equipment::token()?>"/>
-                <div class="prog_row">
-                    <button type="submit" class="btn">Добавить объявление о продаже</button>
+        <!-- Начало окна добавления продажи -->
+        <div class="popup_add_prog" id="modal_equipment_buy">
+            <div class="popup_prog_header">
+                <button type="button" class="close" id="close"></button>
+                <div class="prog_header_text">
+                    Добавить объявление о покупке
                 </div>
-            </form>
+            </div>
+            <div class="popup_prog_body">
+                <div class="popup__msg-buy">
+                </div>
+                <form action="../../ajax/ajax_add_equipment_buy.php" class="form"  id="market_equipment_send"  method="post" enctype="multipart/form-data">
+                    <label for="company" class="prog_span">Компания: <b><?=$equipment->getCompany($_SESSION['user_id']);?></b></label>
+                    <label class="prog_span">Категория объявления: <b>Оборудование - Покупка</b></label>
+                    <label for="nazvanie" class="prog_span">Название:</label>
+                    <input type="text" class="prog_input" placeholder="Введите название оборудования" name="nazvanie" id="nazvanie" qtip-position="left" qtip-content="Вы не ввели название оборудования">
+                    <label for="model" class="prog_span">Модель:</label>
+                    <input type="text" class="prog_input" placeholder="Введите модель оборудования" name="model" id="model" qtip-position="left" qtip-content="Вы не ввели модель оборудования">
+                    <label for="model" class="prog_span">Фото оборудования:</label>
+                    <input type="file" name="foto_equipment" id="foto_equipment"/>
+                    <input type="hidden" id="filename" name="filename" value=""/>
+                    <div class="download_img" id="download_img"></div>
+                    <label for="status_equipment" class="prog_span">Состояние оборудования:</label>
+                    <select class="select catalog-style__select" name="status_equipment" id="status_equipment">
+                        <?=$equipment->getListStatusEquipment()?>
+                    </select>
+                    <label for="cena" class="prog_span">Цена</label>
+                    <input type="text" class="prog_input" placeholder="Введите цену" name="cena" id="cena" qtip-position="left" qtip-content="Вы не ввели цену">
+
+                    <input type="hidden" name="token" id="token" value="<?=$equipment::token()?>"/>
+                    <div class="prog_row">
+                        <button type="submit" class="btn">Добавить объявление о покупке</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <!-- конец окна добавления продажи -->
+        <!-- конец окна добавления продажи -->
     <?php endif; ?>
     <script src='bower/jquery/dist/jquery.js'></script>
     <script src="js/jquery.simpleselect.js"></script>
@@ -137,7 +137,7 @@ $equipment = new Equipment();
     <script src="bower/jquery-file-upload/js/jquery.fileupload.js"></script>
     <!--Скрипт-->
     <script src="js/avtorization.js"></script>
-    <script src="js/add_equipment_sale.js"></script>
+    <script src="js/add_equipment_buy.js"></script>
     <script>
         $("#main").removeClass("catalog-nav__trigger_active catalog-nav__link catalog-nav__link_active").addClass("catalog-nav__trigger catalog-nav__link");
         $("#equipment").addClass("catalog-nav__trigger_active catalog-nav__link catalog-nav__link_active");

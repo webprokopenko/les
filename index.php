@@ -1,4 +1,4 @@
-<? session_start();?>
+<? session_start(); session_regenerate_id(false)?>
 <!doctype html>
 <html lang="ru">
 <head>
